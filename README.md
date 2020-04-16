@@ -214,8 +214,8 @@ const MyComponent = () => {
 <tr>
 <td style="text-align:left;"><code>debounceDelay</code></td>
 <td style="text-align:left;"><code>Number</code></td>
-<td style="text-align:left;"><code>300</code>milliseconds</td>
-<td style="text-align:left;">Debounce delay to optimize high-frequency scroll events. A recommended delay of <code>300</code> milliseconds is set by default.</td>
+<td style="text-align:left;"><code>300</code></td>
+<td style="text-align:left;">Debounce delay (in milliseconds) to optimize high-frequency scroll events. A recommended delay of <code>300</code> milliseconds is set by default.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>gutter</code></td>
