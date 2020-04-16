@@ -9,6 +9,11 @@ export declare const isNull: (val: any) => boolean;
  */
 export declare const isObj: (val: any) => boolean;
 /**
+ * @description Is function
+ * @param val
+ */
+export declare const isFunc: (val: any) => boolean;
+/**
  * @description Uid
  * @param len
  */

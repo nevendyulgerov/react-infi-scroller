@@ -1302,6 +1302,11 @@ var isNull = function (val) { return val === null; };
  */
 var isObj = function (val) { return typeof val === 'object' && !isNull(val) && !Array.isArray(val); };
 /**
+ * @description Is function
+ * @param val
+ */
+var isFunc = function (val) { return typeof val === 'function'; };
+/**
  * @description Uid
  * @param len
  */
@@ -1381,13 +1386,15 @@ var InfiScroller = function (props) {
     var hasScrollTarget = isObj(scrollTarget);
     // @ts-ignore
     useEffect(function () {
+        var scroller = null;
+        var debouncer = null;
         if (active) {
             var initConfig = {
                 element: scrollTarget,
                 immediate: immediate,
                 onScroll: function (_a) {
                     var scrollYOffset = _a.scrollYOffset;
-                    InfiScroller.debouncer(function () {
+                    debouncer(function () {
                         // @ts-ignore
                         var targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
                         // @ts-ignore
@@ -1400,10 +1407,18 @@ var InfiScroller = function (props) {
                     });
                 }
             };
-            InfiScroller.debouncer = debounce(uid(), debounceDelay);
-            InfiScroller.scroller.init(initConfig);
+            scroller = scrollSpy().init(initConfig);
+            debouncer = debounce(uid(), debounceDelay);
         }
-        return function () { return InfiScroller.scroller.destroy(); };
+        return function () {
+            if (isObj(scroller)) {
+                scroller.destroy();
+                scroller = null;
+            }
+            if (isFunc(debouncer)) {
+                debouncer = null;
+            }
+        };
     }, [children, active]);
     return (React.createElement(React.Fragment, null, children));
 };

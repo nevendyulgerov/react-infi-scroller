@@ -11,6 +11,12 @@ export const isNull = (val: any): boolean => val === null;
 export const isObj = (val: any): boolean => typeof val === 'object' && !isNull(val) && !Array.isArray(val);
 
 /**
+ * @description Is function
+ * @param val
+ */
+export const isFunc = (val: any): boolean => typeof val === 'function';
+
+/**
  * @description Uid
  * @param len
  */
