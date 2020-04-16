@@ -128,7 +128,7 @@ const MyComponent = () => {
       <div
         ref={refItemsWrapper}
         style={{ height: 400, overflow: 'auto', backgroundColor: 'white' }}
-        >
+      >
           <InfiScroller
             scrollTarget={refItemsWrapper.current}
             hasMore={hasMore}
