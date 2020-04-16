@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import getNodeDimensions from 'get-node-dimensions';
-import { uid, debounce, scrollSpy, ScrollSpyInitConfig, ScrollSpyOnScrollData, isObj } from './utils';
+import { uid, debounce, scrollSpy, ScrollSpyInitConfig, ScrollSpyOnScrollData, isObj, isFunc } from './utils';
 
 const { useEffect } = React;
 
@@ -23,12 +23,15 @@ const InfiScroller = (props: InfiScrollerProps) => {
 
   // @ts-ignore
   useEffect(() => {
+    let scroller: any = null;
+    let debouncer: any = null;
+
     if (active) {
       const initConfig: ScrollSpyInitConfig = {
         element: scrollTarget,
         immediate,
         onScroll: ({ scrollYOffset }: ScrollSpyOnScrollData) => {
-          InfiScroller.debouncer(() => {
+          debouncer(() => {
             // @ts-ignore
             const targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
             // @ts-ignore
@@ -42,11 +45,21 @@ const InfiScroller = (props: InfiScrollerProps) => {
           });
         }
       };
-      InfiScroller.debouncer = debounce(uid(), debounceDelay);
-      InfiScroller.scroller.init(initConfig);
+
+      scroller = scrollSpy().init(initConfig);
+      debouncer = debounce(uid(), debounceDelay);
     }
 
-    return () => InfiScroller.scroller.destroy();
+    return () => {
+      if (isObj(scroller)) {
+        scroller.destroy();
+        scroller = null;
+      }
+
+      if (isFunc(debouncer)) {
+        debouncer = null;
+      }
+    };
   }, [children, active]);
 
   return (
