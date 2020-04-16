@@ -57,10 +57,9 @@ Use `InfiScroller` on a custom scroll target (like a modal):
 import React, { useRef } from 'react';
 import InfiScroller from 'react-infi-scroller';
 
-const refComponent = useRef(null);
-const scrollTarget = refComponent.current ? refComponent.current.querySelector('.scroll-target') : null;
-
 const MyComponent = () => {
+  const refComponent = useRef(null);
+  const scrollTarget = refComponent.current ? refComponent.current.querySelector('.scroll-target') : null;
   const generateItems = (items = [], length = 30) => {
     const nextItems = [...items, ...Array.from({ length })];
     return nextItems.map((item, index) => ({
