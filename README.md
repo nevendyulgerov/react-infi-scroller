@@ -114,6 +114,12 @@ const MyComponent = () => {
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left;"><code>children</code></td>
+<td style="text-align:left;"><code>Node | NodeList</code></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;">The content in the infinite scroller. Contains the list of items you want to trigger infinite scrolling for.</td>
+</tr>
+<tr>
 <td style="text-align:left;"><code>scrollTarget</code></td>
 <td style="text-align:left;"><code>Node</code></td>
 <td style="text-align:left;"><code>null</code></td>
