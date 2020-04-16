@@ -43,7 +43,12 @@ const MyComponent = () => {
     >
       <ul>
         {items.map((item) => (
-          <li key={item.id}>{item.text}</li>
+          <li
+            key={item.id}
+            style={{ height: 100 }}
+          >
+            {item.text}
+          </li>
         ))}
       </ul>
     </InfiScroller>
@@ -85,7 +90,12 @@ const MyComponent = () => {
         >
           <ul>
             {items.map((item) => (
-              <li key={item.id}>{item.text}</li>
+              <li
+                key={item.id}
+                style={{ height: 100 }}
+              >
+                {item.text}
+              </li>
             ))}
           </ul>
         </InfiScroller>
