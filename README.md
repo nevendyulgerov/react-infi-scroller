@@ -59,12 +59,10 @@ const MyComponent = () => {
 Use `InfiScroller` on a custom scroll target (like a modal):
 
 ```javascript
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import InfiScroller from 'react-infi-scroller';
 
 const MyComponent = () => {
-  const refComponent = useRef(null);
-  const scrollTarget = refComponent.current ? refComponent.current.querySelector('.scroll-target') : null;
   const generateItems = (items = [], length = 30) => {
     const nextItems = [...items, ...Array.from({ length })];
     return nextItems.map((item, index) => ({
@@ -75,31 +73,30 @@ const MyComponent = () => {
   const initialItems = generateItems();
   const [items, setItems] = useState(initialItems);
   const [hasMore, setHasMore] = useState(true);
+  const refComponent = useRef(null);
 
   return (
     <div ref={refComponent}>
-      <div className="scroll-target">
-        <InfiScroller
-          scrollTarget={scrollTarget}
-          hasMore={hasMore}
-          onLoadMore={() => {
-            const nextItems = generateItems(items);
-            setItems(nextItems);
-            setHasMore(nextItems.length < 300);
-          }}
-        >
-          <ul>
-            {items.map((item) => (
-              <li
-                key={item.id}
-                style={{ height: 100 }}
-              >
-                {item.text}
-              </li>
-            ))}
-          </ul>
-        </InfiScroller>
-      </div>
+      <InfiScroller
+        scrollTarget={refComponent.current}
+        hasMore={hasMore}
+        onLoadMore={() => {
+          const nextItems = generateItems(items);
+          setItems(nextItems);
+          setHasMore(nextItems.length < 300);
+        }}
+      >
+        <ul>
+          {items.map((item) => (
+            <li
+              key={item.id}
+              style={{ height: 100 }}
+            >
+              {item.text}
+            </li>
+          ))}
+        </ul>
+      </InfiScroller>
     </div>
   );
 }
