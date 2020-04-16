@@ -102,6 +102,85 @@ const MyComponent = () => {
 }
 ```
 
+Use multiple `InfiScroller` components with custom scroll targets:
+
+```javascript
+import React, { useState, useRef } from 'react';
+import InfiScroller from 'react-infi-scroller';
+
+const MyComponent = () => {
+  const generateItems = (items = [], length = 30) => {
+    const nextItems = [...items, ...Array.from({ length })];
+    return nextItems.map((item, index) => ({
+      id: index,
+      text: `Item ${index}`
+    }));
+  };
+  const [items, setItems] = useState(generateItems());
+  const [hasMore, setHasMore] = useState(true);
+  const [otherItems, setOtherItems] = useState(generateItems());
+  const [hasMoreOther, setHasMoreOther] = useState(true);
+  const refItemsWrapper = useRef(null);
+  const refOtherItemsWrapper = useRef(null);
+
+  return (
+    <div>
+      <div
+        ref={refItemsWrapper}
+        style={{ height: 400, overflow: 'auto', backgroundColor: 'white' }}
+        >
+          <InfiScroller
+            scrollTarget={refItemsWrapper.current}
+            hasMore={hasMore}
+            onLoadMore={() => {
+              const nextItems = generateItems(items);
+              setItems(nextItems);
+              setHasMore(nextItems.length < 300);
+            }}
+          >
+            <ul>
+              {items.map((item) => (
+                <li
+                  key={item.id}
+                  style={{ height: 100 }}
+                >
+                  {item.text}
+                </li>
+              ))}
+            </ul>
+          </InfiScroller>
+      </div>
+
+      <div
+        ref={refOtherItemsWrapper}
+        style={{ height: 400, overflow: 'auto', backgroundColor: 'white', marginTop: 40 }}
+      >
+          <InfiScroller
+            scrollTarget={refOtherItemsWrapper.current}
+            hasMore={hasMoreOther}
+            onLoadMore={() => {
+              const nextOtherItems = generateItems(otherItems);
+              setOtherItems(nextOtherItems);
+              setHasMoreOther(nextOtherItems.length < 300);
+            }}
+          >
+            <ul>
+              {otherItems.map((otherItem) => (
+                <li
+                  key={otherItem.id}
+                  style={{ height: 100 }}
+                >
+                  {otherItem.text}
+                </li>
+              ))}
+            </ul>
+          </InfiScroller>
+      </div>
+    </div>
+  );
+}
+```
+
 ## Props
 
 <table>
