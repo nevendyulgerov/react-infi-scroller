@@ -55,9 +55,9 @@
   },
   "keywords": [
     "react",
-    "react-ui",
-    "ui-pack",
-    "ui-components"
+    "infinite-scroll",
+    "typescript",
+    "prop-types"
   ],
   "jest": {
     "rootDir": "./src",
