@@ -20,6 +20,18 @@ export type InfiScrollerProps = {
 const InfiScroller = (props: InfiScrollerProps) => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;
   const hasScrollTarget = isObj(scrollTarget);
+  const handleOnScroll = (scrollYOffset: number) => {
+    // @ts-ignore
+    const targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
+    // @ts-ignore
+    const scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
+    // @ts-ignore
+    const canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
+
+    if (hasMore && canLoadMore) {
+      onLoadMore();
+    }
+  };
 
   // @ts-ignore
   useEffect(() => {
@@ -33,18 +45,13 @@ const InfiScroller = (props: InfiScrollerProps) => {
         element: scrollTarget,
         immediate,
         onScroll: ({ scrollYOffset }: ScrollSpyOnScrollData) => {
-          debouncer(() => {
-            // @ts-ignore
-            const targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
-            // @ts-ignore
-            const scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
-            // @ts-ignore
-            const canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
+          const handleOnScrollCallback = () => handleOnScroll(scrollYOffset);
 
-            if (hasMore && canLoadMore) {
-              onLoadMore();
-            }
-          });
+          if (!isFunc(debouncer)) {
+            handleOnScrollCallback();
+          } else {
+            debouncer(handleOnScrollCallback);
+          }
         }
       };
 
