@@ -27,6 +27,8 @@ const InfiScroller = (props: InfiScrollerProps) => {
     let debouncer: any = null;
 
     if (active) {
+      debouncer = debounce(uid(), debounceDelay);
+
       const initConfig: ScrollSpyInitConfig = {
         element: scrollTarget,
         immediate,
@@ -47,7 +49,6 @@ const InfiScroller = (props: InfiScrollerProps) => {
       };
 
       scroller = scrollSpy().init(initConfig);
-      debouncer = debounce(uid(), debounceDelay);
     }
 
     return () => {
