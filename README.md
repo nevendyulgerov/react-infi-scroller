@@ -23,13 +23,9 @@ import InfiScroller from 'react-infi-scroller';
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
     const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({
-      id: index,
-      text: `Item ${index}`
-    }));
+    return nextItems.map((item, index) => ({ id: index }));
   };
-  const initialItems = generateItems();
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
 
   return (
@@ -47,7 +43,7 @@ const MyComponent = () => {
             key={item.id}
             style={{ height: 100 }}
           >
-            {item.text}
+            {`Item ${item.id}`}
           </li>
         ))}
       </ul>
@@ -65,13 +61,9 @@ import InfiScroller from 'react-infi-scroller';
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
     const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({
-      id: index,
-      text: `Item ${index}`
-    }));
+    return nextItems.map((item, index) => ({ id: index }));
   };
-  const initialItems = generateItems();
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
   const refComponent = useRef(null);
 
@@ -92,7 +84,7 @@ const MyComponent = () => {
               key={item.id}
               style={{ height: 100 }}
             >
-              {item.text}
+              {`Item ${item.id}`}
             </li>
           ))}
         </ul>
@@ -111,10 +103,7 @@ import InfiScroller from 'react-infi-scroller';
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
     const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({
-      id: index,
-      text: `Item ${index}`
-    }));
+    return nextItems.map((item, index) => ({ id: index }));
   };
   const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
@@ -144,7 +133,7 @@ const MyComponent = () => {
                   key={item.id}
                   style={{ height: 100 }}
                 >
-                  {item.text}
+                  {`Item ${item.id}`}
                 </li>
               ))}
             </ul>
@@ -170,7 +159,7 @@ const MyComponent = () => {
                   key={otherItem.id}
                   style={{ height: 100 }}
                 >
-                  {otherItem.text}
+                  {`Other Item ${otherItem.id}`}
                 </li>
               ))}
             </ul>
