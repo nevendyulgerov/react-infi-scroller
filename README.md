@@ -214,7 +214,7 @@ const MyComponent = () => {
 <td style="text-align:left;"><code>gutter</code></td>
 <td style="text-align:left;"><code>Number</code></td>
 <td style="text-align:left;"><code>10</code></td>
-<td style="text-align:left;">Additional space in pixels used in the default <code>shouldLoadMore</code> calculation. Increasing it will cause the <code>onLoadMore</code> callback to be called before the scrollbar has reached the bottom of the <code>scrollTarget</code>. The larger the number, the earlier the <code>onLoadMore</code> callback will be called. A recommended minimum gutter of <code>10</code> pixels is set by default.</td>
+<td style="text-align:left;">Additional space (in pixels) used in the default <code>shouldLoadMore</code> calculation. Increasing it will cause the <code>onLoadMore</code> callback to be called before the scrollbar has reached the bottom of the <code>scrollTarget</code>. The larger the number, the earlier the <code>onLoadMore</code> callback will be called. A recommended minimum gutter of <code>10</code> pixels is set by default.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>immediate</code></td>
