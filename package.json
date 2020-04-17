@@ -1,6 +1,6 @@
 {
   "name": "react-infi-scroller",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React-based infinite scroll component",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
