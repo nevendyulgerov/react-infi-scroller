@@ -1384,6 +1384,17 @@ var useEffect = React.useEffect;
 var InfiScroller = function (props) {
     var children = props.children, scrollTarget = props.scrollTarget, debounceDelay = props.debounceDelay, gutter = props.gutter, immediate = props.immediate, active = props.active, hasMore = props.hasMore, shouldLoadMore = props.shouldLoadMore, onLoadMore = props.onLoadMore;
     var hasScrollTarget = isObj(scrollTarget);
+    var handleOnScroll = function (scrollYOffset) {
+        // @ts-ignore
+        var targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
+        // @ts-ignore
+        var scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
+        // @ts-ignore
+        var canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
+        if (hasMore && canLoadMore) {
+            onLoadMore();
+        }
+    };
     // @ts-ignore
     useEffect(function () {
         var scroller = null;
@@ -1395,17 +1406,13 @@ var InfiScroller = function (props) {
                 immediate: immediate,
                 onScroll: function (_a) {
                     var scrollYOffset = _a.scrollYOffset;
-                    debouncer(function () {
-                        // @ts-ignore
-                        var targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
-                        // @ts-ignore
-                        var scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
-                        // @ts-ignore
-                        var canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
-                        if (hasMore && canLoadMore) {
-                            onLoadMore();
-                        }
-                    });
+                    var handleOnScrollCallback = function () { return handleOnScroll(scrollYOffset); };
+                    if (!isFunc(debouncer)) {
+                        handleOnScrollCallback();
+                    }
+                    else {
+                        debouncer(handleOnScrollCallback);
+                    }
                 }
             };
             scroller = scrollSpy().init(initConfig);
