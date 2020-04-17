@@ -7,13 +7,13 @@ const { useEffect } = React;
 
 export type InfiScrollerProps = {
   children: React.ReactNode | React.ReactNodeArray,
-  scrollTarget?: React.ReactNode | Window,
-  debounceDelay?: number | 300,
-  gutter?: number | 10,
-  immediate?: boolean | false,
-  active?: boolean | true,
-  hasMore?: boolean | false,
-  shouldLoadMore: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => boolean,
+  scrollTarget?: React.ReactNode | null,
+  debounceDelay?: number,
+  gutter?: number,
+  immediate?: boolean,
+  active?: boolean,
+  hasMore?: boolean,
+  shouldLoadMore?: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => boolean,
   onLoadMore: () => void
 }
 
@@ -33,7 +33,6 @@ const InfiScroller = (props: InfiScrollerProps) => {
     }
   };
 
-  // @ts-ignore
   useEffect(() => {
     let scroller: any = null;
     let debouncer: any = null;
@@ -76,10 +75,6 @@ const InfiScroller = (props: InfiScrollerProps) => {
     </>
   );
 };
-
-InfiScroller.scroller = scrollSpy();
-// @ts-ignore
-InfiScroller.debouncer = null;
 
 InfiScroller.propTypes = {
   children: PropTypes.oneOfType([
