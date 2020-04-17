@@ -16,7 +16,7 @@ To install the component, run:
 
 To import the component in your project:
 
-`import InfiScroller from 'react-infi-scroller`
+`import InfiScroller from 'react-infi-scroller';`
 
 Use `InfiScroller` on the window object:
 
