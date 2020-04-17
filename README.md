@@ -1,5 +1,9 @@
 # React Infi Scroller
 
+[![github](https://img.shields.io/github/stars/nevendyulgerov/react-infi-scroller?style=social)](https://github.com/nevendyulgerov/react-infi-scroller)
+[![npm](https://img.shields.io/npm/v/react-infi-scroller.svg?style=flat-square)](https://www.npmjs.com/package/react-infi-scroller)
+[![npm](https://img.shields.io/npm/l/react-infi-scroller.svg?style=flat-square)](https://github.com/nevendyulgerov/react-infi-scroller/blob/master/LICENSE)
+
 <p>React-based infinite scroll component that just works. It supports <code>window</code> and scrollable nodes, without inline style for height.</p>
 
 ## Installation
@@ -216,7 +220,7 @@ const MyComponent = () => {
 <td style="text-align:left;"><code>immediate</code></td>
 <td style="text-align:left;"><code>Boolean</code></td>
 <td style="text-align:left;"><code>false</code></td>
-<td style="text-align:left;">Whether to trigger an initial check, before any scroll event, if <code>onLoadMore</code> callback should be called. Set it to <code>true</code>when you want <code>onLoadMore</code> to be called immediately after a page reload if the scrollbar has been set to the bottom of the page.</td>
+<td style="text-align:left;">Whether to trigger an initial check, before any scroll event, if <code>onLoadMore</code> callback should be called. Set it to <code>true</code>when you want <code>onLoadMore</code> to be called immediately after a page reload in case the scrollbar has been preset to the bottom of the page.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>active</code></td>
