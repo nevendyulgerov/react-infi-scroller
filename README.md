@@ -150,7 +150,7 @@ const MyComponent = () => {
             onLoadMore={() => {
               const nextOtherItems = generateItems(otherItems);
               setOtherItems(nextOtherItems);
-              setHasMoreOther(nextOtherItems.length < 300);
+              setHasMoreOther(nextOtherItems.length < 120);
             }}
           >
             <ul>
