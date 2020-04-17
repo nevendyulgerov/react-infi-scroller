@@ -1389,6 +1389,7 @@ var InfiScroller = function (props) {
         var scroller = null;
         var debouncer = null;
         if (active) {
+            debouncer = debounce(uid(), debounceDelay);
             var initConfig = {
                 element: scrollTarget,
                 immediate: immediate,
@@ -1408,7 +1409,6 @@ var InfiScroller = function (props) {
                 }
             };
             scroller = scrollSpy().init(initConfig);
-            debouncer = debounce(uid(), debounceDelay);
         }
         return function () {
             if (isObj(scroller)) {
