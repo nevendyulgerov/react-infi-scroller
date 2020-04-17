@@ -120,7 +120,7 @@ const MyComponent = () => {
     <div>
       <div
         ref={refItemsWrapper}
-        style={{ height: 400, overflow: 'auto', backgroundColor: 'white' }}
+        style={{ height: 300, overflow: 'auto', backgroundColor: 'white' }}
       >
           <InfiScroller
             scrollTarget={refItemsWrapper.current}
@@ -146,7 +146,7 @@ const MyComponent = () => {
 
       <div
         ref={refOtherItemsWrapper}
-        style={{ height: 400, overflow: 'auto', backgroundColor: 'white', marginTop: 40 }}
+        style={{ height: 500, overflow: 'auto', backgroundColor: 'white', marginTop: 40 }}
       >
           <InfiScroller
             scrollTarget={refOtherItemsWrapper.current}
