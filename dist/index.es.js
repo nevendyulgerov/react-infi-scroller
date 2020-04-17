@@ -1391,7 +1391,6 @@ var InfiScroller = function (props) {
             onLoadMore();
         }
     };
-    // @ts-ignore
     useEffect(function () {
         var scroller = null;
         var debouncer = null;
@@ -1425,9 +1424,6 @@ var InfiScroller = function (props) {
     }, [children, active]);
     return (createElement(Fragment$1, null, children));
 };
-InfiScroller.scroller = scrollSpy();
-// @ts-ignore
-InfiScroller.debouncer = null;
 InfiScroller.propTypes = {
     children: propTypes_14([
         propTypes_8,
