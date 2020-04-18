@@ -21,10 +21,14 @@ const InfiScroller = (props: InfiScrollerProps) => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;
   const hasScrollTarget = isObj(scrollTarget);
   const handleOnScroll = (scrollYOffset: number) => {
-    // @ts-ignore
-    const targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
-    // @ts-ignore
-    const scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
+    const targetHeight = hasScrollTarget
+      // @ts-ignore
+      ? getNodeDimensions(scrollTarget).height
+      : window.innerHeight;
+    const scrollHeight = hasScrollTarget
+      // @ts-ignore
+      ? scrollTarget.scrollHeight
+      : document.body.clientHeight;
     // @ts-ignore
     const canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
 
