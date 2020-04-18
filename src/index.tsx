@@ -66,11 +66,7 @@ const InfiScroller = (props: InfiScrollerProps) => {
     };
   }, [children, active]);
 
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 InfiScroller.propTypes = {
