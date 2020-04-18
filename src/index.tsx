@@ -34,8 +34,8 @@ const InfiScroller = (props: InfiScrollerProps) => {
   };
 
   useEffect(() => {
-    let scroller: any = null;
     let debouncer: any = null;
+    let scroller: any = null;
 
     if (active) {
       debouncer = debounce(uid(), debounceDelay);
@@ -58,13 +58,10 @@ const InfiScroller = (props: InfiScrollerProps) => {
     }
 
     return () => {
-      if (isObj(scroller)) {
-        scroller.destroy();
-        scroller = null;
-      }
-
       if (isFunc(debouncer)) {
         debouncer = null;
+        scroller.destroy();
+        scroller = null;
       }
     };
   }, [children, active]);
