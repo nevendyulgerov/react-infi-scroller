@@ -54,7 +54,8 @@ export const scrollSpy = () => {
   let hasElement = false;
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars
-  let handleOnScroll = (scrollYOffset: number) => {};
+  const defaultOnScroll = (scrollYOffset: number) => {};
+  let handleOnScroll = defaultOnScroll;
 
   const getDocumentOffsetY = () => window.pageYOffset || document.documentElement.scrollTop;
 
@@ -101,6 +102,7 @@ export const scrollSpy = () => {
     },
     destroy() {
       detachListener();
+      handleOnScroll = defaultOnScroll;
       return this;
     }
   };
