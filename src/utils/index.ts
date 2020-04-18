@@ -52,6 +52,7 @@ export const scrollSpy = () => {
   let targetElement = window;
   let didScroll = false;
   let hasElement = false;
+  const onScrollDelay = 50;
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars
   const defaultOnScroll = (scrollYOffset: number) => {};
@@ -72,7 +73,7 @@ export const scrollSpy = () => {
 
   const scrollListener = () => {
     if (!didScroll) {
-      setTimeout(handleScroll, 50);
+      setTimeout(handleScroll, onScrollDelay);
       didScroll = true;
     }
   };
