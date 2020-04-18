@@ -1335,12 +1335,16 @@ var scrollSpy = function () {
     var targetElement = window;
     var didScroll = false;
     var hasElement = false;
+    var onScrollDelay = 50;
     // @ts-ignore
     // eslint-disable-next-line no-unused-vars
-    var handleOnScroll = function (scrollYOffset) { };
+    var defaultOnScroll = function (scrollYOffset) { };
+    var handleOnScroll = defaultOnScroll;
     var getDocumentOffsetY = function () { return window.pageYOffset || document.documentElement.scrollTop; };
-    // @ts-ignore
-    var getOffsetY = function () { return (hasElement ? targetElement.scrollTop : getDocumentOffsetY()); };
+    var getOffsetY = function () { return (hasElement
+        // @ts-ignore
+        ? targetElement.scrollTop
+        : getDocumentOffsetY()); };
     var handleScroll = function () {
         var scrollYOffset = getOffsetY();
         handleOnScroll(scrollYOffset);
@@ -1348,7 +1352,7 @@ var scrollSpy = function () {
     };
     var scrollListener = function () {
         if (!didScroll) {
-            setTimeout(handleScroll, 50);
+            setTimeout(handleScroll, onScrollDelay);
             didScroll = true;
         }
     };
@@ -1374,6 +1378,7 @@ var scrollSpy = function () {
         },
         destroy: function () {
             detachListener();
+            handleOnScroll = defaultOnScroll;
             return this;
         }
     };
@@ -1384,10 +1389,14 @@ var InfiScroller = function (props) {
     var children = props.children, scrollTarget = props.scrollTarget, debounceDelay = props.debounceDelay, gutter = props.gutter, immediate = props.immediate, active = props.active, hasMore = props.hasMore, shouldLoadMore = props.shouldLoadMore, onLoadMore = props.onLoadMore;
     var hasScrollTarget = isObj(scrollTarget);
     var handleOnScroll = function (scrollYOffset) {
-        // @ts-ignore
-        var targetHeight = hasScrollTarget ? getNodeDimensions(scrollTarget).height : window.innerHeight;
-        // @ts-ignore
-        var scrollHeight = hasScrollTarget ? scrollTarget.scrollHeight : document.body.clientHeight;
+        var targetHeight = hasScrollTarget
+            // @ts-ignore
+            ? getNodeDimensions(scrollTarget).height
+            : window.innerHeight;
+        var scrollHeight = hasScrollTarget
+            // @ts-ignore
+            ? scrollTarget.scrollHeight
+            : document.body.clientHeight;
         // @ts-ignore
         var canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
         if (hasMore && canLoadMore) {
@@ -1422,7 +1431,7 @@ var InfiScroller = function (props) {
             }
         };
     }, [children, active]);
-    return (React.createElement(React.Fragment, null, children));
+    return React.createElement(React.Fragment, null, children);
 };
 InfiScroller.propTypes = {
     children: propTypes_14([
