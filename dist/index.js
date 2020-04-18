@@ -1379,6 +1379,7 @@ var scrollSpy = function () {
         }
     };
 };
+//# sourceMappingURL=index.js.map
 
 var useEffect = React.useEffect;
 var InfiScroller = function (props) {
@@ -1396,8 +1397,8 @@ var InfiScroller = function (props) {
         }
     };
     useEffect(function () {
-        var scroller = null;
         var debouncer = null;
+        var scroller = null;
         if (active) {
             debouncer = debounce(uid(), debounceDelay);
             var initConfig = {
@@ -1417,12 +1418,10 @@ var InfiScroller = function (props) {
             scroller = scrollSpy().init(initConfig);
         }
         return function () {
-            if (isObj(scroller)) {
-                scroller.destroy();
-                scroller = null;
-            }
             if (isFunc(debouncer)) {
                 debouncer = null;
+                scroller.destroy();
+                scroller = null;
             }
         };
     }, [children, active]);
