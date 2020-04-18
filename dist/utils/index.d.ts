@@ -24,13 +24,10 @@ export declare const uid: (len?: number) => string;
  * @param delay
  */
 export declare const debounce: (id: string | number, delay: number | undefined) => (callback: () => void) => void;
-export interface ScrollSpyOnScrollData {
-    scrollYOffset: number;
-}
 export interface ScrollSpyInitConfig {
     element: any;
     immediate?: boolean | false;
-    onScroll: (scrollSpyOnScrollData: ScrollSpyOnScrollData) => void;
+    onScroll: (scrollYOffset: number) => void;
 }
 /**
  * @description Scroll spy

@@ -1337,14 +1337,13 @@ var scrollSpy = function () {
     var hasElement = false;
     // @ts-ignore
     // eslint-disable-next-line no-unused-vars
-    var handleOnScroll = function (scrollSpyOnScrollData) { };
+    var handleOnScroll = function (scrollYOffset) { };
     var getDocumentOffsetY = function () { return window.pageYOffset || document.documentElement.scrollTop; };
     // @ts-ignore
     var getOffsetY = function () { return (hasElement ? targetElement.scrollTop : getDocumentOffsetY()); };
     var handleScroll = function () {
         var scrollYOffset = getOffsetY();
-        // @ts-ignore
-        handleOnScroll({ scrollYOffset: scrollYOffset });
+        handleOnScroll(scrollYOffset);
         didScroll = false;
     };
     var scrollListener = function () {
@@ -1379,7 +1378,6 @@ var scrollSpy = function () {
         }
     };
 };
-//# sourceMappingURL=index.js.map
 
 var useEffect = React.useEffect;
 var InfiScroller = function (props) {
@@ -1404,8 +1402,7 @@ var InfiScroller = function (props) {
             var initConfig = {
                 element: scrollTarget,
                 immediate: immediate,
-                onScroll: function (_a) {
-                    var scrollYOffset = _a.scrollYOffset;
+                onScroll: function (scrollYOffset) {
                     var handleOnScrollCallback = function () { return handleOnScroll(scrollYOffset); };
                     if (!isFunc(debouncer)) {
                         handleOnScrollCallback();
