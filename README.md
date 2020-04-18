@@ -255,7 +255,7 @@ const MyComponent = () => {
   + gutter
   >= scrollHeight
 )</pre></td>
-<td style="text-align:left;">Determine if more items should be loaded. By default a <code>scrollTargetHeight + scrollYOffset + gutter >= scrollHeight</code> formula is used. Provide a different function to customize this behavior.</td>
+<td style="text-align:left;">Determine if more items should be loaded. By default a <code>scrollTargetHeight + scrollYOffset + gutter >= scrollHeight</code> formula is used. Provide a different function to customize this behavior. <code>shouldLoadMore</code> will be called only if <code>hasMore</code> is <code>true</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>onLoadMore</code></td>
