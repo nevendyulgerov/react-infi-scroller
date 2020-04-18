@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import getNodeDimensions from 'get-node-dimensions';
-import { uid, debounce, scrollSpy, ScrollSpyInitConfig, ScrollSpyOnScrollData, isObj, isFunc } from './utils';
+import { uid, debounce, scrollSpy, ScrollSpyInitConfig, isObj, isFunc } from './utils';
 
 const { useEffect } = React;
 
@@ -43,7 +43,7 @@ const InfiScroller = (props: InfiScrollerProps) => {
       const initConfig: ScrollSpyInitConfig = {
         element: scrollTarget,
         immediate,
-        onScroll: ({ scrollYOffset }: ScrollSpyOnScrollData) => {
+        onScroll: (scrollYOffset: number) => {
           const handleOnScrollCallback = () => handleOnScroll(scrollYOffset);
 
           if (!isFunc(debouncer)) {

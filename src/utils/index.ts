@@ -39,14 +39,10 @@ export const debounce = (id: number | string, delay: number | 300 | undefined): 
   };
 };
 
-export interface ScrollSpyOnScrollData {
-  scrollYOffset: number
-}
-
 export interface ScrollSpyInitConfig {
   element: any,
   immediate?: boolean | false,
-  onScroll: (scrollSpyOnScrollData: ScrollSpyOnScrollData) => void
+  onScroll: (scrollYOffset: number) => void
 }
 
 /**
@@ -58,7 +54,7 @@ export const scrollSpy = () => {
   let hasElement = false;
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars
-  let handleOnScroll = (scrollSpyOnScrollData: ScrollSpyOnScrollData) => {};
+  let handleOnScroll = (scrollYOffset: number) => {};
 
   const getDocumentOffsetY = () => window.pageYOffset || document.documentElement.scrollTop;
 
@@ -67,8 +63,7 @@ export const scrollSpy = () => {
 
   const handleScroll = () => {
     const scrollYOffset = getOffsetY();
-    // @ts-ignore
-    handleOnScroll({ scrollYOffset });
+    handleOnScroll(scrollYOffset);
     didScroll = false;
   };
 
