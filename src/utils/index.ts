@@ -59,8 +59,10 @@ export const scrollSpy = () => {
 
   const getDocumentOffsetY = () => window.pageYOffset || document.documentElement.scrollTop;
 
-  // @ts-ignore
-  const getOffsetY = () => (hasElement ? targetElement.scrollTop : getDocumentOffsetY());
+  const getOffsetY = () => (hasElement
+    // @ts-ignore
+    ? targetElement.scrollTop
+    : getDocumentOffsetY());
 
   const handleScroll = () => {
     const scrollYOffset = getOffsetY();
