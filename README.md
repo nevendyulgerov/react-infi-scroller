@@ -1,6 +1,5 @@
 # React Infi Scroller
 
-[![github](https://img.shields.io/github/stars/nevendyulgerov/react-infi-scroller?style=social)](https://github.com/nevendyulgerov/react-infi-scroller)
 [![npm](https://img.shields.io/npm/v/react-infi-scroller.svg?style=flat-square)](https://www.npmjs.com/package/react-infi-scroller)
 [![npm](https://img.shields.io/npm/l/react-infi-scroller.svg?style=flat-square)](https://github.com/nevendyulgerov/react-infi-scroller/blob/master/LICENSE)
 
