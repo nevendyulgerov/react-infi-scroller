@@ -1398,8 +1398,7 @@ var InfiScroller = function (props) {
             ? scrollTarget.scrollHeight
             : document.body.clientHeight;
         // @ts-ignore
-        var canLoadMore = shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight);
-        if (hasMore && canLoadMore) {
+        if (hasMore && shouldLoadMore(targetHeight, scrollYOffset, gutter, scrollHeight)) {
             onLoadMore();
         }
     };
