@@ -175,6 +175,48 @@ const MyComponent = () => {
 }
 ```
 
+Use `InfiScroller` with a spinner/loader:
+
+```javascript
+import React, { useState } from 'react';
+import InfiScroller from 'react-infi-scroller';
+
+const MyComponent = () => {
+  const generateItems = (items = [], length = 30) => {
+    const nextItems = [...items, ...Array.from({ length })];
+    return nextItems.map((item, index) => ({ id: index }));
+  };
+  const [items, setItems] = useState(generateItems());
+  const [hasMore, setHasMore] = useState(true);
+
+  return (
+    <InfiScroller
+      hasMore={hasMore}
+      onLoadMore={() => {
+        const nextItems = generateItems(items);
+        setItems(nextItems);
+        setHasMore(nextItems.length < 300);
+      }}
+    >
+      <ul>
+        {items.map((item) => (
+          <li
+            key={item.id}
+            style={{ height: 100 }}
+          >
+            {`Item ${item.id}`}
+          </li>
+        ))}
+      </ul>
+
+      {hasMore && (
+        <span>Loading...</span>
+      )}
+    </InfiScroller>
+  );
+}
+```
+
 ## Props
 
 <table>
