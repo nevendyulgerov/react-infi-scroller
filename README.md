@@ -221,7 +221,7 @@ const MyComponent = () => {
 <td style="text-align:left;"><code>immediate</code></td>
 <td style="text-align:left;"><code>Boolean</code></td>
 <td style="text-align:left;"><code>false</code></td>
-<td style="text-align:left;">Whether to trigger an initial check, before any scroll event, if <code>onLoadMore</code> callback should be called. Set it to <code>true</code>when you want <code>onLoadMore</code> to be called immediately after a page reload in case the scrollbar has been preset to the bottom of the page.</td>
+<td style="text-align:left;">Whether to trigger an initial check, before any scroll event, if <code>onLoadMore</code> callback should be called. Set it to <code>true</code>when you want <code>onLoadMore</code> to be called immediately after a page load. This can be useful in case the scrollbar has been preset to the bottom of the page or the content of the page is less than the height of the scrollTarget and no scroll exist yet.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>active</code></td>
@@ -232,7 +232,7 @@ const MyComponent = () => {
 <tr>
 <td style="text-align:left;"><code>hasMore</code></td>
 <td style="text-align:left;"><code>Boolean</code></td>
-<td style="text-align:left;">false</td>
+<td style="text-align:left;"><code>false</code></td>
 <td style="text-align:left;">Whether there are more items to load. This flag is used to determine if <code>onLoadMore</code> should be called. The entire check looks like this <code>hasMore && shouldLoadMore(...)</code>.</td>
 </tr>
 <tr>
