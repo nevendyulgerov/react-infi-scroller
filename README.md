@@ -227,7 +227,7 @@ const MyComponent = () => {
 <td style="text-align:left;"><code>active</code></td>
 <td style="text-align:left;"><code>Boolean</code></td>
 <td style="text-align:left;"><code>true</code></td>
-<td style="text-align:left;">Turn on/off the infinite scroller. Keeps the component's children visible. Useful when the infinite scroller is placed inside a modal and you want it disabled until the modal is activated.</td>
+<td style="text-align:left;">Turn on/off the infinite scroller. Keeps the component's children visible. Detaches event listeners when set to <code>false</code>. Attaches event listeners when set to <code>true</code>. Useful when the infinite scroller is placed inside a modal and you want it disabled until the modal is activated.</td>
 </tr>
 <tr>
 <td style="text-align:left;"><code>hasMore</code></td>
