@@ -116,12 +116,29 @@ const MyComponent = () => {
   const [hasMoreOther, setHasMoreOther] = useState(true);
   const refItemsWrapper = useRef(null);
   const refOtherItemsWrapper = useRef(null);
+  
+  /* Styles for the scroll targets used below
+  <style>
+    .items-scroller {
+      height: 300px;
+      overflow: auto;
+      background-color: white;
+    }
+
+    .other-items-scroller {
+      height: 500px;
+      margin-top: 40px;
+      overflow: auto;
+      background-color: white;
+    }
+  </style>
+  */
 
   return (
     <div>
       <div
         ref={refItemsWrapper}
-        style={{ height: 300, overflow: 'auto', backgroundColor: 'white' }}
+        className="items-scroller"
       >
           <InfiScroller
             scrollTarget={refItemsWrapper.current}
@@ -147,7 +164,7 @@ const MyComponent = () => {
 
       <div
         ref={refOtherItemsWrapper}
-        style={{ height: 500, overflow: 'auto', backgroundColor: 'white', marginTop: 40 }}
+        className="other-items-scroller"
       >
           <InfiScroller
             scrollTarget={refOtherItemsWrapper.current}
