@@ -1,10 +1,20 @@
 import * as React from 'react';
 import getNodeDimensions from 'get-node-dimensions';
-import { InfiScrollerProps } from './types/components.type';
-import { ScrollSpyInitConfig } from './interfaces/utils.interface';
-import { uid, debounce, scrollSpy, isObj, isFunc } from './utils';
+import { uid, debounce, scrollSpy, isObj, isFunc, ScrollSpyInitConfig } from './utils';
 
 const { useEffect } = React;
+
+export type InfiScrollerProps = {
+  children: React.ReactNode | React.ReactNodeArray,
+  scrollTarget?: React.ReactNode | null,
+  debounceDelay?: number,
+  gutter?: number,
+  immediate?: boolean,
+  active?: boolean,
+  hasMore?: boolean,
+  shouldLoadMore?: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => boolean,
+  onLoadMore: () => void
+}
 
 const InfiScroller = (props: InfiScrollerProps) => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;

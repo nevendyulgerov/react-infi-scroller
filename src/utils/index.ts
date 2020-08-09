@@ -1,5 +1,3 @@
-import { ScrollSpyInitConfig } from '../interfaces/utils.interface';
-
 /**
  * @description Is null
  * @param val
@@ -40,6 +38,13 @@ export const debounce = (id: number | string, delay: number | 300 | undefined): 
     timers[id] = setTimeout(callback, delay);
   };
 };
+
+export interface ScrollSpyInitConfig {
+  element: any,
+  immediate?: boolean | false,
+  onScroll: (scrollYOffset: number) => void
+}
+
 
 /**
  * @description Scroll spy
