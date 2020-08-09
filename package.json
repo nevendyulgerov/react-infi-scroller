@@ -6,8 +6,7 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "dependencies": {
-    "get-node-dimensions": "^1.2.1",
-    "prop-types": "^15.7.2"
+    "get-node-dimensions": "^1.2.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.2.1",
@@ -15,7 +14,6 @@
     "@testing-library/react": "^9.4.0",
     "@types/get-node-dimensions": "^1.2.0",
     "@types/jest": "^24.9.1",
-    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "babel-eslint": "^10.0.3",
@@ -35,6 +33,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.25.3",
     "rollup-watch": "^4.3.1",
     "ts-jest": "^25.0.0",
@@ -55,8 +54,7 @@
   "keywords": [
     "react",
     "infinite-scroll",
-    "typescript",
-    "prop-types"
+    "typescript"
   ],
   "jest": {
     "rootDir": "./src",
