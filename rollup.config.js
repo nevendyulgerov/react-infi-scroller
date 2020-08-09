@@ -30,7 +30,15 @@ export default [{
       rollupCommonJSResolveHack: true
     }),
     commonjs({
-      include: ['node_modules/**']
+      include: ['node_modules/**'],
+      namedExports: {
+        'node_modules/react/react.js': [
+          'Children',
+          'Component',
+          'createElement'
+        ],
+        'node_modules/react-dom/index.js': ['render']
+      }
     }),
     terser()
   ]
