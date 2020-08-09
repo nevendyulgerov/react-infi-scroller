@@ -1,10 +1,14 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "env": {
     "browser": true,
     "node": true,
@@ -17,7 +21,6 @@
       "always",
       {
         "js": "never",
-        "mjs": "never",
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
@@ -48,6 +51,7 @@
     "compat/compat": "error",
     "consistent-return": "off",
     "comma-dangle": "off",
+    "flowtype-errors/show-errors": "off",
     "generator-star-spacing": "off",
     "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": "off",
@@ -58,7 +62,7 @@
     "prefer-template": "off",
     "promise/param-names": "error",
     "promise/always-return": "error",
-    "promise/catch-or-return": "error",
+    "promise/catch-or-return": "warn",
     "promise/no-native": "off",
     "no-shadow": "off",
     "linebreak-style": 0,
@@ -82,6 +86,10 @@
         ]
       }
     ],
+    "react/jsx-max-props-per-line": ["warn", {
+      "maximum": 2,
+      "when": "always"
+    }],
     "jsx-a11y/label-has-for": [
       2,
       {
@@ -104,8 +112,8 @@
         "extensions": [
           ".js",
           ".jsx",
-          ".tsx",
-          ".d.ts"
+          ".ts",
+          ".tsx"
         ]
       }
     ],
@@ -118,9 +126,11 @@
     "react/jsx-boolean-value": "off",
     "react/prop-types": 2,
     "react/no-danger": "off",
-    "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/state-in-constructor": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/ban-ts-comment": "warn"
   },
   "globals": {
     "__DEV__": true
@@ -131,16 +141,26 @@
     "compat",
     "react",
     "jest",
-    "react-hooks"
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "settings": {
     "polyfills": [
-      "promises"
+      "Promise",
+      "fetch"
     ],
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
