@@ -5,8 +5,8 @@ import { uid, debounce, scrollSpy, isObj, isFunc, ScrollSpyInitConfig } from './
 const { useEffect } = React;
 
 export type InfiScrollerProps = {
-  children: React.ReactNode | React.ReactNodeArray,
-  scrollTarget?: React.ReactNode | null,
+  children: JSX.Element | null,
+  scrollTarget?: JSX.Element | null,
   debounceDelay?: number,
   gutter?: number,
   immediate?: boolean,
@@ -16,7 +16,7 @@ export type InfiScrollerProps = {
   onLoadMore: () => void
 }
 
-const InfiScroller = (props: InfiScrollerProps) => {
+const InfiScroller = (props: InfiScrollerProps): JSX.Element | null => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;
   const hasScrollTarget = isObj(scrollTarget);
 
