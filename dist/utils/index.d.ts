@@ -1,4 +1,3 @@
-import { ScrollSpyInitConfig } from '../interfaces/utils.interface';
 /**
  * @description Is null
  * @param val
@@ -25,6 +24,11 @@ export declare const uid: (len?: number) => string;
  * @param delay
  */
 export declare const debounce: (id: string | number, delay: number | undefined) => (callback: () => void) => void;
+export interface ScrollSpyInitConfig {
+    element: any;
+    immediate?: boolean | false;
+    onScroll: (scrollYOffset: number) => void;
+}
 /**
  * @description Scroll spy
  */
