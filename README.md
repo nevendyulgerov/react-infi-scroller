@@ -54,7 +54,7 @@ const MyComponent = () => {
       </ul>
     </InfiScroller>
   );
-}
+};
 ```
 
 Use `InfiScroller` on a custom scroll target (like a modal):
@@ -96,7 +96,7 @@ const MyComponent = () => {
       </InfiScroller>
     </div>
   );
-}
+};
 ```
 
 Use multiple `InfiScroller` components with custom scroll targets:
@@ -189,7 +189,7 @@ const MyComponent = () => {
       </div>
     </div>
   );
-}
+};
 ```
 
 Use `InfiScroller` with a spinner/loader:
@@ -231,7 +231,7 @@ const MyComponent = () => {
       )}
     </InfiScroller>
   );
-}
+};
 ```
 
 ## Props
