@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "types": "/dist/index.d.ts",
   "dependencies": {
     "get-node-dimensions": "^1.2.1"
   },
