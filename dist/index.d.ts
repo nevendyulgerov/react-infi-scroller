@@ -1,7 +1,7 @@
-import * as React from 'react';
+/// <reference types="react" />
 export declare type InfiScrollerProps = {
-    children: React.ReactNode | React.ReactNodeArray;
-    scrollTarget?: React.ReactNode | null;
+    children: JSX.Element | null;
+    scrollTarget?: JSX.Element | null;
     debounceDelay?: number;
     gutter?: number;
     immediate?: boolean;
@@ -11,7 +11,7 @@ export declare type InfiScrollerProps = {
     onLoadMore: () => void;
 };
 declare const InfiScroller: {
-    (props: InfiScrollerProps): React.ReactNode;
+    (props: InfiScrollerProps): JSX.Element | null;
     defaultProps: {
         scrollTarget: null;
         debounceDelay: number;
