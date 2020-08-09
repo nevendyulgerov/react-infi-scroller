@@ -27,8 +27,11 @@ import InfiScroller from 'react-infi-scroller';
 
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
-    const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({ id: index }));
+    const nextItems = [...items];
+    for (let i = 0; i < length; i += 1) {
+      nextItems.push(items.length + i);
+    }
+    return nextItems;
   };
   const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
@@ -45,10 +48,10 @@ const MyComponent = () => {
       <ul>
         {items.map((item) => (
           <li
-            key={item.id}
+            key={item}
             style={{ height: 100 }}
           >
-            {`Item ${item.id}`}
+            {`Item ${item}`}
           </li>
         ))}
       </ul>
@@ -65,8 +68,11 @@ import InfiScroller from 'react-infi-scroller';
 
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
-    const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({ id: index }));
+    const nextItems = [...items];
+    for (let i = 0; i < length; i += 1) {
+      nextItems.push(items.length + i);
+    }
+    return nextItems;
   };
   const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
@@ -86,10 +92,10 @@ const MyComponent = () => {
         <ul>
           {items.map((item) => (
             <li
-              key={item.id}
+              key={item}
               style={{ height: 100 }}
             >
-              {`Item ${item.id}`}
+              {`Item ${item}`}
             </li>
           ))}
         </ul>
@@ -107,8 +113,11 @@ import InfiScroller from 'react-infi-scroller';
 
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
-    const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({ id: index }));
+    const nextItems = [...items];
+    for (let i = 0; i < length; i += 1) {
+      nextItems.push(items.length + i);
+    }
+    return nextItems;
   };
   const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
@@ -152,10 +161,10 @@ const MyComponent = () => {
             <ul>
               {items.map((item) => (
                 <li
-                  key={item.id}
+                  key={item}
                   style={{ height: 100 }}
                 >
-                  {`Item ${item.id}`}
+                  {`Item ${item}`}
                 </li>
               ))}
             </ul>
@@ -178,10 +187,10 @@ const MyComponent = () => {
             <ul>
               {otherItems.map((otherItem) => (
                 <li
-                  key={otherItem.id}
+                  key={otherItem}
                   style={{ height: 100 }}
                 >
-                  {`Other Item ${otherItem.id}`}
+                  {`Other Item ${otherItem}`}
                 </li>
               ))}
             </ul>
@@ -200,8 +209,11 @@ import InfiScroller from 'react-infi-scroller';
 
 const MyComponent = () => {
   const generateItems = (items = [], length = 30) => {
-    const nextItems = [...items, ...Array.from({ length })];
-    return nextItems.map((item, index) => ({ id: index }));
+    const nextItems = [...items];
+    for (let i = 0; i < length; i += 1) {
+      nextItems.push(items.length + i);
+    }
+    return nextItems;
   };
   const [items, setItems] = useState(generateItems());
   const [hasMore, setHasMore] = useState(true);
@@ -218,10 +230,10 @@ const MyComponent = () => {
       <ul>
         {items.map((item) => (
           <li
-            key={item.id}
+            key={item}
             style={{ height: 100 }}
           >
-            {`Item ${item.id}`}
+            {`Item ${item}`}
           </li>
         ))}
       </ul>
