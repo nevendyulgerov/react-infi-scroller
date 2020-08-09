@@ -12,21 +12,26 @@ export type InfiScrollerProps = {
   immediate?: boolean,
   active?: boolean,
   hasMore?: boolean,
-  shouldLoadMore?: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => boolean,
+  shouldLoadMore?: (
+    targetHeight: number,
+    scrollYOffset: number,
+    gutter: number,
+    scrollHeight: number
+  ) => boolean,
   onLoadMore: () => void
 }
 
-const InfiScroller = (props: InfiScrollerProps): JSX.Element | null => {
+const InfiScroller: React.FunctionComponent<InfiScrollerProps> = (props: InfiScrollerProps): JSX.Element | null => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;
-  const hasScrollTarget = isObj(scrollTarget);
+  const hasScrollTarget: boolean = isObj(scrollTarget);
 
-  const handleOnScroll = (scrollYOffset: number) => {
-    const targetHeight = hasScrollTarget
+  const handleOnScroll = (scrollYOffset: number): void => {
+    const targetHeight: number = hasScrollTarget
       // @ts-ignore
       ? getNodeDimensions(scrollTarget).height
       : window.innerHeight;
 
-    const scrollHeight = hasScrollTarget
+    const scrollHeight: number = hasScrollTarget
       // @ts-ignore
       ? scrollTarget.scrollHeight
       : document.body.clientHeight;
@@ -37,7 +42,7 @@ const InfiScroller = (props: InfiScrollerProps): JSX.Element | null => {
     }
   };
 
-  useEffect(() => {
+  useEffect((): () => void => {
     let debouncer: any = null;
     let scroller: any = null;
 
@@ -48,7 +53,7 @@ const InfiScroller = (props: InfiScrollerProps): JSX.Element | null => {
         element: scrollTarget,
         immediate,
         onScroll: (scrollYOffset: number) => {
-          const handleOnScrollCallback = () => handleOnScroll(scrollYOffset);
+          const handleOnScrollCallback: () => void = () => handleOnScroll(scrollYOffset);
 
           if (!isFunc(debouncer)) {
             handleOnScrollCallback();
@@ -80,9 +85,12 @@ InfiScroller.defaultProps = {
   immediate: false,
   active: true,
   hasMore: false,
-  shouldLoadMore: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => (
-    targetHeight + scrollYOffset + gutter >= scrollHeight
-  )
+  shouldLoadMore: (
+    targetHeight: number,
+    scrollYOffset: number,
+    gutter: number,
+    scrollHeight: number
+  ) => targetHeight + scrollYOffset + gutter >= scrollHeight
 };
 
 export default InfiScroller;
