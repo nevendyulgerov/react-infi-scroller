@@ -296,12 +296,12 @@ const MyComponent = () => {
 </tr>
 <tr>
 <td style="text-align:left;"><code>shouldLoadMore</code></td>
-<td style="text-align:left;"><pre>Function(
+<td style="text-align:left;"><pre>(
  scrollTargetHeight: number,
  scrollYOffset: number,
  gutter: number,
  scrollHeight: number
-)</pre></td>
+) => boolean</pre></td>
 <td style="text-align:left;"><pre>(
  scrollTargetHeight,
  scrollYOffset,
@@ -317,7 +317,7 @@ const MyComponent = () => {
 </tr>
 <tr>
 <td style="text-align:left;"><code>onLoadMore</code></td>
-<td style="text-align:left;"><code>Function</code></td>
+<td style="text-align:left;"><code>() => void</code></td>
 <td style="text-align:left;"></td>
 <td style="text-align:left;">Called when <code>hasMore && shouldLoadMore(...)</code> is <code>true</code>. You should load and render more items in the infinite scroller when <code>onLoadMore</code> is called.</td>
 </tr>
