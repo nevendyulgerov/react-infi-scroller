@@ -1,30 +1,21 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import getNodeDimensions from 'get-node-dimensions';
-import { uid, debounce, scrollSpy, ScrollSpyInitConfig, isObj, isFunc } from './utils';
+import { InfiScrollerProps } from './types/components.type';
+import { ScrollSpyInitConfig } from './interfaces/utils.interface';
+import { uid, debounce, scrollSpy, isObj, isFunc } from './utils';
 
 const { useEffect } = React;
-
-export type InfiScrollerProps = {
-  children: React.ReactNode | React.ReactNodeArray,
-  scrollTarget?: React.ReactNode | null,
-  debounceDelay?: number,
-  gutter?: number,
-  immediate?: boolean,
-  active?: boolean,
-  hasMore?: boolean,
-  shouldLoadMore?: (targetHeight: number, scrollYOffset: number, gutter: number, scrollHeight: number) => boolean,
-  onLoadMore: () => void
-}
 
 const InfiScroller = (props: InfiScrollerProps) => {
   const { children, scrollTarget, debounceDelay, gutter, immediate, active, hasMore, shouldLoadMore, onLoadMore } = props;
   const hasScrollTarget = isObj(scrollTarget);
+
   const handleOnScroll = (scrollYOffset: number) => {
     const targetHeight = hasScrollTarget
       // @ts-ignore
       ? getNodeDimensions(scrollTarget).height
       : window.innerHeight;
+
     const scrollHeight = hasScrollTarget
       // @ts-ignore
       ? scrollTarget.scrollHeight
@@ -69,25 +60,7 @@ const InfiScroller = (props: InfiScrollerProps) => {
     };
   }, [children, active]);
 
-  return <>{children}</>;
-};
-
-InfiScroller.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ]).isRequired,
-  scrollTarget: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.any
-  ]),
-  debounceDelay: PropTypes.number,
-  gutter: PropTypes.number,
-  immediate: PropTypes.bool,
-  active: PropTypes.bool,
-  hasMore: PropTypes.bool,
-  shouldLoadMore: PropTypes.func,
-  onLoadMore: PropTypes.func.isRequired
+  return children;
 };
 
 InfiScroller.defaultProps = {
